@@ -197,5 +197,21 @@ public class Hello {
                 break;
         }
         System.out.println("bulan ke "+bulanke);
+        
+        for(int i = 0; i < 5 ; i++){
+            System.out.println("Print looping ke "+i);
+        }
+        
+        int x = 1;
+        while (x < 5) {            
+            System.out.println("print dari loop while");
+            x++;
+        }
+        
+        int y = 1;
+        do {            
+            System.out.println("print dari loop do-while");
+            y++;
+        } while (y < 5);
     }
 }
