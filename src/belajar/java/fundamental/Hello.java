@@ -3,7 +3,9 @@ package belajar.java.fundamental;
 import aplikasi.pendaftaran.Peserta;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Hello {
 
@@ -89,14 +91,20 @@ public class Hello {
         for (String buah : daftarBuah) {
             System.out.println("daftar urutan buah : "+ buah);
         }
+        
+        Set<String> setDaftarBuah = new HashSet<String>();
+        setDaftarBuah.add("pisang");
+        setDaftarBuah.add("mangga");
+        setDaftarBuah.add("jambu");
+        setDaftarBuah.add("jambu");
+        
+        for (String buah : setDaftarBuah) {
+            System.out.println("daftar set buat : "+buah);
+        }
                
         Person person = new Pelajar();
         person.setAlamat("jakarta");
         System.out.println("alamat : "
                 +person.getAlamat());
-        
-        for(int i=0; i < 10;i++){
-            System.out.println("index ke : "+i);
-        }
     }
 }
