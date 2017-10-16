@@ -109,9 +109,7 @@ public class Hello {
         mapBuah.put("nama", "pisang");
         mapBuah.put("warna", "kuning");
         mapBuah.put("rasa", "manis");
-        
-        mapBuah.put("nama", "pisang2");
-        
+                
         System.out.println("Nama buah dari map : "+mapBuah.get("nama"));
         System.out.println("warna buah dari map : "+mapBuah.get("warna"));
         System.out.println("rasa buah dari map : "+mapBuah.get("rasa"));
@@ -119,6 +117,24 @@ public class Hello {
         for(Map.Entry<String,String> buah : mapBuah.entrySet()){
             System.out.println("Key : "+buah.getKey());
             System.out.println("value : "+buah.getValue());
+        }
+        
+        Map<String,String> mapBuah2 = new HashMap<String, String>();
+        
+        mapBuah2.put("nama", "anggur");
+        mapBuah2.put("warna", "merah");
+        mapBuah2.put("rasa", "manis");
+        
+        List<Map<String,String>> listMapBuah = new ArrayList<Map<String, String>>();
+        listMapBuah.add(mapBuah);
+        listMapBuah.add(mapBuah2);
+        
+        for (Map<String, String> map : listMapBuah) {
+            System.out.println("======= map yang ada di dalam list ===== ");
+            for(Map.Entry<String,String> entry : map.entrySet()){
+                System.out.println("Key : "+ entry.getKey());
+                System.out.println("value : "+ entry.getValue());
+            }
         }
                
         Person person = new Pelajar();
