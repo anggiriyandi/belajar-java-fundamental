@@ -3,8 +3,10 @@ package belajar.java.fundamental;
 import aplikasi.pendaftaran.Peserta;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Hello {
@@ -94,12 +96,29 @@ public class Hello {
         
         Set<String> setDaftarBuah = new HashSet<String>();
         setDaftarBuah.add("pisang");
-        setDaftarBuah.add("mangga");
         setDaftarBuah.add("jambu");
+        setDaftarBuah.add("mangga");
         setDaftarBuah.add("jambu");
         
         for (String buah : setDaftarBuah) {
             System.out.println("daftar set buat : "+buah);
+        }
+        
+        Map<String,String> mapBuah = new HashMap<String, String>();
+        
+        mapBuah.put("nama", "pisang");
+        mapBuah.put("warna", "kuning");
+        mapBuah.put("rasa", "manis");
+        
+        mapBuah.put("nama", "pisang2");
+        
+        System.out.println("Nama buah dari map : "+mapBuah.get("nama"));
+        System.out.println("warna buah dari map : "+mapBuah.get("warna"));
+        System.out.println("rasa buah dari map : "+mapBuah.get("rasa"));
+        
+        for(Map.Entry<String,String> buah : mapBuah.entrySet()){
+            System.out.println("Key : "+buah.getKey());
+            System.out.println("value : "+buah.getValue());
         }
                
         Person person = new Pelajar();
