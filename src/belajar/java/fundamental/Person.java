@@ -5,6 +5,7 @@
  */
 package belajar.java.fundamental;
 
+import aplikasi.pendaftaran.JenisKelamin;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class Person {
     protected String nama;
     protected String alamat;
+    private JenisKelamin jenisKelamin;
     public List<String> noTelepon = new ArrayList<>();
 
     public Person() {
@@ -47,5 +49,13 @@ public class Person {
 
     public void setNoTelepon(List<String> noTelepon) {
         this.noTelepon = noTelepon;
+    }
+
+    public JenisKelamin getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(JenisKelamin jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
     }
 }

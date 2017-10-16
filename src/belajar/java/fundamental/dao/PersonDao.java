@@ -14,5 +14,5 @@ import belajar.java.fundamental.Person;
 public interface PersonDao {
     public void simpanPeserson(Person person);
     public Person getPersonByName(String name);
-    public void updatePerson(String id, Person person);
+    public void updatePerson(String id, Person person);    
 }

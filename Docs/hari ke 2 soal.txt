@@ -1,0 +1,6 @@
+Terdapat dua golongan pegawai di universitas, yaitu Dosen dan Staf biasa. Semua pegawai mendapatkan gaji awal yang sama, yaitu 1.500.000
+
+Gaji tambahan dosen dihitung dari jumlah sks yang diampu
+Gaji tambahan staf dihitung dari jumlah kehadiran per bulan
+
+Buatlah program untuk mencetak semua gaji pegawai

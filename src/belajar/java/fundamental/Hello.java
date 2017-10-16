@@ -1,5 +1,6 @@
 package belajar.java.fundamental;
 
+import aplikasi.pendaftaran.JenisKelamin;
 import aplikasi.pendaftaran.Peserta;
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,6 +55,7 @@ public class Hello {
         Pekerja p = new Pekerja();
         p.setNama("Anggi");
         p.setAlamat("jakarta");
+        p.setJenisKelamin(JenisKelamin.LAKI_LAKI);
         list.add(p);
 
         Pekerja p1 = new Pekerja();
