@@ -6,7 +6,6 @@
 package belajar.java.fundamental;
 
 import aplikasi.pendaftaran.JenisKelamin;
-import aplikasi.pendaftaran.Peserta;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,7 +53,7 @@ public class FileImport {
 //                System.out.println("Data Peserta : " + data);
                 String[] isi = data.split(",");
                 
-                if(isi.length != 4){
+                if(isi.length != 5){
                     throw new IllegalStateException("data tidak sesuai");
                 }
                 
@@ -71,6 +70,8 @@ public class FileImport {
                     throw new IllegalStateException("DATA JENIS KELAMIN TIDAK TERDAFTAR !!");
                 }
                 pekerja.getNoTelepon().add(isi[3]);
+                pekerja.getNoTelepon().add(isi[4]);
+                
                 datarPekerja.add(pekerja);
 
                 data = reader.readLine();
