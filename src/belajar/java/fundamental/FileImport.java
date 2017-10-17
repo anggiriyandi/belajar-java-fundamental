@@ -5,56 +5,81 @@
  */
 package belajar.java.fundamental;
 
+import aplikasi.pendaftaran.JenisKelamin;
+import aplikasi.pendaftaran.Peserta;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author anggi
  */
 public class FileImport {
+
     private File file;
     private BufferedReader reader;
 
     public FileImport(String filePath) {
         this.file = new File(filePath);
     }
-    
-    public void bukaFile() throws FileNotFoundException{
-        
-        if(!file.exists()) {
+
+    public void bukaFile() throws FileNotFoundException {
+
+        if (!file.exists()) {
             throw new FileNotFoundException("File tidak ditemukan");
         }
-        
         reader = new BufferedReader(new FileReader(file));
     }
-    
-    public void tutupFile() throws IOException{
-        if(reader != null){
+
+    public void tutupFile() throws IOException {
+        if (reader != null) {
             reader.close();
         }
     }
-    
-    public void proses(){
+
+    public List<Pekerja> proses() {
+        List<Pekerja> datarPekerja = new ArrayList<Pekerja>();
         try {
             bukaFile();
             String data = reader.readLine();
-            System.out.println("Data Header "+data);
+            System.out.println("Data Header " + data);
             data = reader.readLine();
-            
-            while (data != null) {                
-                System.out.println("Data Peserta : "+data);
+
+            while (data != null) {
+//                System.out.println("Data Peserta : " + data);
+                String[] isi = data.split(",");
+                
+                if(isi.length != 4){
+                    throw new IllegalStateException("data tidak sesuai");
+                }
+                
+                Pekerja pekerja = new Pekerja();
+
+                pekerja.setNama(isi[0]);
+                pekerja.setAlamat(isi[1]);
+
+                if (isi[2].equals("laki-laki")) {
+                    pekerja.setJenisKelamin(JenisKelamin.LAKI_LAKI);
+                } else if(isi[2].equals("perempuan")) {
+                    pekerja.setJenisKelamin(JenisKelamin.PEREMPUAN);
+                }else {
+                    throw new IllegalStateException("DATA JENIS KELAMIN TIDAK TERDAFTAR !!");
+                }
+                pekerja.getNoTelepon().add(isi[3]);
+                datarPekerja.add(pekerja);
+
                 data = reader.readLine();
             }
             tutupFile();
-            
-//            return null;
+            return datarPekerja;
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-//        return null;
+        return datarPekerja;
     }
 }

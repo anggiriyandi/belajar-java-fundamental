@@ -5,6 +5,8 @@
  */
 package belajar.java.fundamental;
 
+import java.util.List;
+
 /**
  *
  * @author anggi
@@ -26,8 +28,13 @@ public class Main {
 //        
 //        System.out.println(builder.toString());
 
-          FileImport fileImport = new FileImport("/tmp/peserta.tx");
-          fileImport.proses();
+        FileImport fileImport = new FileImport("/tmp/peserta.txt");
+        List<Pekerja> list = fileImport.proses();
+        for (Pekerja pekerja : list) {
+            System.out.println("========= daftar pekerja dari file =============");
+            System.out.println("Nama : "+pekerja.getNama());
+            System.out.println("Alamat : "+pekerja.getAlamat());
+        }
     }
     
 }
