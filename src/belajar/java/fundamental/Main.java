@@ -33,13 +33,15 @@ public class Main {
 
         PekerjaDao pekerjaDao = new PekerjaDaoImpl();
         
-        FileImport fileImport = new FileImport("/tmp/peserta.txt");
-        List<Pekerja> list = fileImport.proses();
+//        FileImport fileImport = new FileImport("/tmp/peserta.txt");
+//        List<Pekerja> list = fileImport.proses();
+
+        List<Pekerja> list = pekerjaDao.cariSemua();
         for (Pekerja pekerja : list) {
             System.out.println("========= daftar pekerja dari file =============");
             System.out.println("Nama : "+pekerja.getNama());
             System.out.println("Alamat : "+pekerja.getAlamat());
-            pekerjaDao.simpan(pekerja);
+//            pekerjaDao.simpan(pekerja);
         }
     }
     

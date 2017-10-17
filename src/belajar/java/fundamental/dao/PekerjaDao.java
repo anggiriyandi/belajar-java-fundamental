@@ -6,6 +6,7 @@
 package belajar.java.fundamental.dao;
 
 import belajar.java.fundamental.Pekerja;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,5 @@ import belajar.java.fundamental.Pekerja;
 public interface PekerjaDao {
     
     public void simpan(Pekerja pekerja);
+    public List<Pekerja> cariSemua();
 }

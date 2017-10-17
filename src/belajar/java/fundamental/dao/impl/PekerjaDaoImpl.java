@@ -5,12 +5,16 @@
  */
 package belajar.java.fundamental.dao.impl;
 
+import aplikasi.pendaftaran.JenisKelamin;
 import belajar.java.fundamental.Datasource;
 import belajar.java.fundamental.Pekerja;
 import belajar.java.fundamental.dao.PekerjaDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +26,9 @@ public class PekerjaDaoImpl implements PekerjaDao {
     
     String queryInsertPeserta = "insert into "
             + "pekerja (nama,alamat,jenisKelamin,noTelepon) "
-            + "values (?,?,?,?)";
+            + "values (?,?,?,?)" ;
+    
+    String queryCariSemua = "select * from pekerja";
 
     @Override
     public void simpan(Pekerja pekerja) {
@@ -46,9 +52,50 @@ public class PekerjaDaoImpl implements PekerjaDao {
             ps.setString(4, sb.toString());
             ps.executeUpdate();
             
+            conn.close();
+            ps.close();
+            
         } catch (SQLException ex) {
             Logger.getLogger(PekerjaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    @Override
+    public List<Pekerja> cariSemua() {
+        try {
+            List<Pekerja> list = new ArrayList<>();
+            Connection conn = Datasource.getConnection();
+            PreparedStatement ps = conn.prepareStatement(queryCariSemua);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Pekerja pekerja = new Pekerja();
+                pekerja.setNama(rs.getString("nama"));
+                pekerja.setAlamat(rs.getString("alamat"));
+                
+                if(rs.getString("jenisKelamin").equalsIgnoreCase("laki-laki")){
+                    pekerja.setJenisKelamin(JenisKelamin.LAKI_LAKI);
+                }else{
+                    pekerja.setJenisKelamin(JenisKelamin.PEREMPUAN);
+                }
+                
+                String[] noTelpArr = rs.getString("noTelepon").split(",");
+                
+                for(int i = 0; i < noTelpArr.length; i++){
+                    pekerja.getNoTelepon().add(noTelpArr[i]);
+                }
+                
+                list.add(pekerja);
+            }
+            
+            conn.close();
+            ps.close();
+            
+            return list;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }    
 }
