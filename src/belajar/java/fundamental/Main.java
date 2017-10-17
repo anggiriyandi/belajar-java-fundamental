@@ -7,6 +7,7 @@ package belajar.java.fundamental;
 
 import belajar.java.fundamental.dao.PekerjaDao;
 import belajar.java.fundamental.dao.impl.PekerjaDaoImpl;
+import belajar.java.fundamental.service.PekerjaService;
 import java.sql.Connection;
 import java.util.List;
 
@@ -31,18 +32,8 @@ public class Main {
 //        
 //        System.out.println(builder.toString());
 
-        PekerjaDao pekerjaDao = new PekerjaDaoImpl();
-        
-//        FileImport fileImport = new FileImport("/tmp/peserta.txt");
-//        List<Pekerja> list = fileImport.proses();
-
-        List<Pekerja> list = pekerjaDao.cariSemua();
-        for (Pekerja pekerja : list) {
-            System.out.println("========= daftar pekerja dari file =============");
-            System.out.println("Nama : "+pekerja.getNama());
-            System.out.println("Alamat : "+pekerja.getAlamat());
-//            pekerjaDao.simpan(pekerja);
-        }
+          PekerjaService ps = new PekerjaService();
+          ps.readPekerjaFromDatabase();
     }
     
 }

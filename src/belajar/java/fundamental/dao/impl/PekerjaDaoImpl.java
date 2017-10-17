@@ -35,6 +35,8 @@ public class PekerjaDaoImpl implements PekerjaDao {
         Connection conn = Datasource.getConnection();
         
         try {
+            conn.setAutoCommit(false);
+            
             PreparedStatement ps = conn.prepareStatement(queryInsertPeserta);
             ps.setString(1, pekerja.getNama());
             ps.setString(2, pekerja.getAlamat());
@@ -48,15 +50,21 @@ public class PekerjaDaoImpl implements PekerjaDao {
                     sb.append(",");
                 }
             }
-            
             ps.setString(4, sb.toString());
             ps.executeUpdate();
+            
+            conn.commit();
+            conn.setAutoCommit(true);
             
             conn.close();
             ps.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(PekerjaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                conn.rollback();
+            } catch (SQLException ex1) {
+                ex1.printStackTrace();
+            }
         }
     }
 
