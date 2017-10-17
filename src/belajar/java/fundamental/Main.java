@@ -15,16 +15,19 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String a = "123123";
-        a.concat(" tambah concat");
-        
-        System.out.println(a);
-        
-        StringBuilder builder = new StringBuilder();
-        builder.append("123123123");
-        builder.append(" ditambah method sebelumnya");
-        
-        System.out.println(builder.toString());
+//        String a = "123123";
+//        a.concat(" tambah concat");
+//        
+//        System.out.println(a);
+//        
+//        StringBuilder builder = new StringBuilder();
+//        builder.append("123123123");
+//        builder.append(" ditambah method sebelumnya");
+//        
+//        System.out.println(builder.toString());
+
+          FileImport fileImport = new FileImport("/tmp/peserta.tx");
+          fileImport.proses();
     }
     
 }
